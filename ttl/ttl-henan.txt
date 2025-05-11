@@ -1,0 +1,55 @@
+Running experiment with TTL = 1
+TTL 1: Starting sniffing before sending packets...
+TTL 1: Waiting for packets (timeout 5 seconds)...
+TTL 1: Timeout reached. No RST packet received.
+--------------------------------------
+Running experiment with TTL = 2
+TTL 2: Starting sniffing before sending packets...
+TTL 2: Waiting for packets (timeout 5 seconds)...
+TTL 2: Timeout reached. No RST packet received.
+--------------------------------------
+Running experiment with TTL = 3
+TTL 3: Starting sniffing before sending packets...
+TTL 3: Waiting for packets (timeout 5 seconds)...
+TTL 3: Timeout reached. No RST packet received.
+--------------------------------------
+Running experiment with TTL = 4
+TTL 4: Starting sniffing before sending packets...
+TTL 4: Waiting for packets (timeout 5 seconds)...
+TTL 4: Timeout reached. No RST packet received.
+--------------------------------------
+Running experiment with TTL = 5
+TTL 5: Starting sniffing before sending packets...
+TTL 5: Waiting for packets (timeout 5 seconds)...
+TTL 5: Received packet.
+###[ Ethernet ]###
+  type      = IPv4
+###[ IP ]###
+     version   = 4
+     ihl       = 5
+     tos       = 0x0
+     len       = 50
+     id        = 1
+     flags     = 
+     frag      = 0
+     ttl       = 58
+     proto     = tcp
+     chksum    = 0x5485
+     \options   \
+###[ TCP ]###
+        sport     = https
+        dport     = 45000
+        seq       = 1
+        ack       = 1104
+        dataofs   = 5
+        reserved  = 0
+        flags     = RA
+        window    = 0
+        chksum    = 0xb49d
+        urgptr    = 0
+        options   = []
+###[ Encrypted Content ]###
+           load      = b'\x01\x02\x03\x04\x05\x06\x07\x08\t\x00'
+
+TTL 5: Received RST packet. Terminating sniffing.
+--------------------------------------

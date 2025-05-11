@@ -1,0 +1,2 @@
+tshark -Y "tcp.flags.reset==1 or tls.handshake.type == 1" -T fields -e ip.src -e tcp.srcport -e ip.dst -e tcp.dstport -e tls.handshake.extensions_server_name -r wall_behind_wall_sfo-1_2023-08-16_09-58-44.pcap | sort | uniq -c
+

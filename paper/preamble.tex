@@ -1,0 +1,351 @@
+% This template file contains packages and commands that are useful and generic
+% across papers.
+%
+% When adding new commands, you can most likely do that within paper.tex, but
+% when adding new packages, you might need to update that here to ensure the
+% packages are included in the proper order (a common source of compilation
+% errors with LaTeX).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages {{{
+
+\usepackage[T1]{fontenc}
+
+\usepackage{color}
+
+% Insert images
+\usepackage{graphicx}
+
+% Subfigures.
+\usepackage[labelformat=simple]{subcaption}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{makecell} % Not sure if we need this
+\usepackage{enumitem} % We do need this for IP Order appendix
+%\usepackage[ruled,vlined]{algorithm2e}
+
+\usepackage{ulem}
+\normalem
+
+\usepackage{listings}
+\lstset{breaklines=true}
+
+\usepackage[export]{adjustbox}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
+\usepackage{bigdelim}
+\usepackage{changepage}
+\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only enable this for footnote-style affiliations
+%\usepackage{authblk}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands {{{
+
+\newcommand{\etal}{et~al.\xspace}
+
+\renewcommand\thesubfigure{(\alph{subfigure}) }
+
+
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environments {{{
+
+\newenvironment{strategy}[1][htb]
+  {\renewcommand{\algorithmcfname}{Strategy}
+   \begin{algorithm}[#1]%
+  }{
+   \end{algorithm}
+  }
+
+\newenvironment{tightlist}{
+	\begin{list}{$\bullet$} {
+		\setlength{\itemsep}{0.00cm}
+		\setlength{\parskip}{-0.1cm}
+	}}{\end{list}}
+
+\newenvironment{widelist}{
+	\begin{list}{$\bullet$} {
+		\setlength{\leftmargin}{.60cm}
+		\setlength{\itemsep}{.00cm}
+	}}{\end{list}}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comment Commands {{{
+
+\ifdefined\isFinalized
+\newcommand{\NewCommentType}[3]{}
+\else
+\newcommand{\NewCommentType}[3]{\expandafter\newcommand\csname #1\endcsname[1]{{\color{#2}{#3: ##1}} }}
+\fi
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Line-break nudging {{{
+
+\clubpenalty=10000
+\widowpenalty = 10000
+
+\hyphenation{de-a-non-y-mi-za-tion}
+\hyphenation{none-the-less}
+\hyphenation{libev}
+\hyphenation{Shadow-socks}
+\hyphenation{Outline-VPN}
+\hyphenation{Web-RTC}
+\hyphenation{Geo-Lite}
+\hyphenation{Ali-ba-ba}
+\hyphenation{time-stamp}
+\hyphenation{time-stamps}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prettier fonts {{{
+
+\usepackage[override]{cmtt} % make tt font tighter / less ugly
+
+% To render CU tap figure
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots}
+\DeclareUnicodeCharacter{2212}{−}
+\usepgfplotslibrary{groupplots,dateplot}
+\usetikzlibrary{patterns,shapes.arrows}
+\pgfplotsset{compat=newest}
+
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% begin self-added packages
+
+%% % For citations having Chinese characters in the title
+\usepackage{CJKutf8}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% For tables
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{caption}
+\usepackage[export]{adjustbox}
+\usepackage{siunitx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't use monospace for URLs.
+%\urlstyle{same}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% To balance references
+\usepackage{balance}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autoref {{{
+
+% Labels for \autoref.
+% https://tex.stackexchange.com/a/313508
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}
+\def\algorithmautorefname{Algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Parhead
+\newcommand{\parhead}[1]{\medskip\Parhead{#1}}
+% \Parhead is like \parhead except that it doesn't add preceding vertical space.
+\newcommand{\Parhead}[1]{\noindent\textbf{#1}\hskip 0.5em\relax}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Comments/Notes
+%% \newcommand{\todo}[1]{{\color{red}{TODO TK: #1}} }
+%% \newcommand{\dml}[1]{{\color{blue}{[[Dave: #1]]}} }
+ \newcommand{\note}[1]{{\color{blue}{[[#1]]}} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Anonymization for CU
+\newcommand{\cublong}{University of Colorado Boulder}
+%\newcommand{\cublong}{University }
+\newcommand{\cub}{CU Boulder}
+%\newcommand{\cub}{University }
+
+\newcommand{\Q}[1]{{\color{red}{Question: #1}} }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Disable metadata for reproducible PDF.
+% https://tex.stackexchange.com/a/313605
+\ifpdf
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=-1
+%\hypersetup{pdfcreator={},pdfproducer={}}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Suppress page numbers for camera-ready version.
+% \pagenumbering{gobble}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Use an unbreakable space before the section number in citations like
+% \cite[\S 1.2]{Ref}, rather than the default comma plus breakable space.
+\renewcommand{\citemid}{~}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paper-specific commands {{{
+
+% System name (if applicable)
+\newcommand{\name}{$\mathsf{SystemName}$\xspace} % middle of sentence
+\newcommand{\Name}{$\mathsf{SystemName}$\xspace} % start of sentence
+
+% Per-author comment commands (they don't appear if you "make finalized")
+% 	Colors: black, blue, brown, cyan, darkgray, gray, green, lightgray, lime
+% 	magenta, olive, orange, pink, purple, red, teal, violet, white,	yellow
+\NewCommentType{todo}{red}{TODO}
+\NewCommentType{dml}{violet}{dml}
+
+% }}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Helpful self-defined command for IEEE author block alignment:
+% https://tex.stackexchange.com/questions/458204/ieeetran-document-class-how-to-align-five-authors-properly/458208#458208
+
+\makeatletter
+\newcommand{\linebreakand}{%
+  \end{@IEEEauthorhalign}
+  \hfill\mbox{}\par
+  \mbox{}\hfill\begin{@IEEEauthorhalign}
+}
+\makeatother
+
+% For equal contribution footnote
+
+\makeatletter
+\newcommand{\footnotestar}[1]{%
+  \begingroup%
+  \renewcommand{\thefootnote}{*}%
+  \renewcommand{\@makefnmark}{\hbox{\textsuperscript{*}}}%
+  \footnotetext{#1}%
+  \endgroup%
+}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Environment for drawing a sequence of byte-sized boxes around text.
+% Use \x for a one-byte box, \xx for a two-byte box, \xxxx for a four-byte box,
+% and \xxxxxxxx for an eight-byte box.
+% Example:
+% \begin{bytebox}
+% \x{03}\x{c}\x{o}\x{m}
+% \xx{c00c}
+% \end{bytebox}
+
+\newlength{\byteboxdim}
+\newlength{\byteboxwidth}
+% \byteboxpre is empty on entering the bytebox environment. It is overridden in
+% \byteboxpost to permit line breaks between cells. No line break is permitted
+% before the first cell, in order to keep e.g. opening parentheses attached if adjacent.
+\newcommand{\byteboxpre}{}
+\newcommand{\byteboxpost}{%
+% permit line break before the next cell, if any
+\renewcommand{\byteboxpre}{\hspace{0pt}}%
+% space backwards for the next cell
+\kern-\fboxrule\relax%
+\ignorespaces\nopagebreak%
+}
+\newenvironment{bytebox}{%
+\renewcommand{\byteboxpre}{}%
+% Size byte cells relative to the size of \strutbox in the current font size.
+\setlength{\byteboxdim}{\dimexpr\dp\strutbox + \ht\strutbox}%
+\setlength{\byteboxwidth}{\byteboxdim}%
+\setlength{\fboxsep}{0pt}%
+\ignorespaces%
+}{%
+\nolinebreak\kern\fboxrule\relax%
+}
+\newcommand{\x}[2][white]{%
+\byteboxpre%
+\fcolorbox{frame}{#1}{\makebox[\byteboxwidth]{\rule[-0.2\byteboxdim]{0pt}{0.9\byteboxdim}{\texttt{#2}}}}%
+\byteboxpost%
+}
+\newcommand{\xx}[2][white]{%
+\byteboxpre%
+\fcolorbox{frame}{#1}{\makebox[\dimexpr 2\byteboxwidth+\fboxrule]{\rule[-0.2\byteboxdim]{0pt}{0.9\byteboxdim}{\texttt{#2}}}}%
+% draw tick marks within the box
+{%
+\color{frame}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr \byteboxwidth+\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr \byteboxwidth+\fboxrule}}%
+}%
+\byteboxpost%
+}
+\newcommand{\xxxx}[2][white]{%
+\byteboxpre%
+\fcolorbox{frame}{#1}{\makebox[\dimexpr 4\byteboxwidth+3\fboxrule]{\rule[-0.2\byteboxdim]{0pt}{0.9\byteboxdim}{\texttt{#2}}}}%
+% draw tick marks within the box
+{%
+\color{frame}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 1\byteboxwidth+1\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 2\byteboxwidth+2\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 3\byteboxwidth+3\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 1\byteboxwidth+1\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 2\byteboxwidth+2\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 3\byteboxwidth+3\fboxrule}}%
+}%
+\byteboxpost%
+}
+\newcommand{\xxxxxxxx}[2][white]{%
+\byteboxpre%
+\fcolorbox{frame}{#1}{\makebox[\dimexpr 8\byteboxwidth+7\fboxrule]{\rule[-0.2\byteboxdim]{0pt}{0.9\byteboxdim}{\texttt{#2}}}}%
+% draw tick marks within the box
+{%
+\color{frame}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 1\byteboxwidth+1\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 2\byteboxwidth+2\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 3\byteboxwidth+3\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 4\byteboxwidth+4\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 5\byteboxwidth+5\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 6\byteboxwidth+6\fboxrule}}%
+\llap{\rule[-0.2\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 7\byteboxwidth+7\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 1\byteboxwidth+1\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 2\byteboxwidth+2\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 3\byteboxwidth+3\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 4\byteboxwidth+4\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 5\byteboxwidth+5\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 6\byteboxwidth+6\fboxrule}}%
+\llap{\rule[+0.6\byteboxdim]{\fboxrule}{0.1\byteboxdim}\hspace{\dimexpr 7\byteboxwidth+7\fboxrule}}%
+}%
+\byteboxpost%
+}
+
+% Colors available to use as the optional argument to byte \x, \xx, \xxxx.
+% Hint: use the online oklch color picker to adjust lightness and chroma and convert back to sRGB.
+\definecolor{frame}{gray}{0.40}       % box frame
+\definecolor{h} {RGB}{242,242,242} % https://oklch.com/#96,0.000,360,100 header
+\definecolor{hc}{RGB}{242,242,242} % https://oklch.com/#96,0.000,360,100 header count fields: QDCOUNT, ANCOUNT, NSCOUNT, ARCOUNT
+\definecolor{lp}{RGB}{111,246,253} % https://oklch.com/#90,0.118,200,100 label length prefix
+\definecolor{l} {RGB}{204,253,255} % https://oklch.com/#96,0.118,200,100 label byte
+\definecolor{q} {RGB}{245,243,224} % https://oklch.com/#96,0.024,100,100 QTYPE, QCLASS
+\definecolor{in}{RGB}{252,229,229} % https://oklch.com/#94,0.026,17,100  injected answer resource record
+\definecolor{dg}{RGB}{220,254,206} % https://oklch.com/#96,0.072,136,100 "digest" bytes that are the first 4 leaked bytes in some cases
+\definecolor{b} {RGB}{247,243,211} % https://oklch.com/#96,0.042,102,100 Wallbleed leaked bytes of memory
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% To use \cmark and \xmark
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+%% end self-added packages

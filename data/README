@@ -1,0 +1,100 @@
+Errata:
+
+The unpaided and stopped sink server on Jan 11, 2025 caused the unfinished measurement tasks started by crontab jobs. Though we topped down the account on Jan 13, 2025, it still took time to process all jobs already started. The jobs will flip tsval on and off each time, making the measurement inaccurate. We thus exlcude all testings until the issure is resolved since Jan 18, 2025.
+
+Gap 1: 2024-11-10 (included) to 2024-11-13 (included)
+Gap 2: 2025-01-11 (included) to 2025-01-17 (included)
+
+rm censored-sni-california_2025-01-{11,12,13,14,15,16,17}.txt censored-sni-guangzhou_2025-01-{11,12,13,14,15,16,17}.txt
+
+
+
+To start, use `make`.
+
+grep Removal second-level-domain-changes.csv| sort -t, -k5,5 -nr | head
+com.au,2024-01-26,100%,0%,5334,26,"Removal of com.au, Drop from 100% to 0%, 5334 to 26"
+com.au,2023-11-22,100%,0%,5334,45,"Removal of com.au, Drop from 100% to 0%, 5334 to 45"
+com.au,2024-01-12,99%,0%,5331,44,"Removal of com.au, Drop from 99% to 0%, 5331 to 44"
+net.br,2023-11-26,100%,0%,758,0,"Removal of net.br, Drop from 100% to 0%, 758 to 0"
+edu.br,2023-12-06,100%,4%,258,11,"Removal of edu.br, Drop from 100% to 4%, 258 to 11"
+gov.co,2023-11-24,100%,0%,240,1,"Removal of gov.co, Drop from 100% to 0%, 240 to 1"
+gov.tw,2024-01-17,100%,0%,220,2,"Removal of gov.tw, Drop from 100% to 0%, 220 to 2"
+edu.ar,2023-11-28,100%,0%,184,0,"Removal of edu.ar, Drop from 100% to 0%, 184 to 0"
+edu.pe,2023-12-03,100%,3%,182,7,"Removal of edu.pe, Drop from 100% to 3%, 182 to 7"
+net.pl,2023-12-08,100%,5%,172,9,"Removal of net.pl, Drop from 100% to 5%, 172 to 9"
+
+
+grep Addition second-level-domain-changes.csv| sort -t, -k6,6 -nr | head
+com.au,2024-01-24,0%,100%,27,5334,"Addition of com.au, Jump from 0% to 100%, 27 to 5334"
+com.au,2024-01-11,0%,99%,44,5331,"Addition of com.au, Jump from 0% to 99%, 44 to 5331"
+co.za,2024-02-07,0%,100%,1,2075,"Addition of co.za, Jump from 0% to 100%, 1 to 2075"
+org.uk,2024-01-31,0%,100%,2,1547,"Addition of org.uk, Jump from 0% to 100%, 2 to 1547"
+co.in,2023-12-24,0%,100%,0,1190,"Addition of co.in, Jump from 0% to 100%, 0 to 1190"
+my.id,2024-01-14,0%,100%,0,107,"Addition of my.id, Jump from 0% to 100%, 0 to 107"
+edu.sg,2023-12-28,6%,100%,3,43,"Addition of edu.sg, Jump from 6% to 100%, 3 to 43"
+gov.mo,2024-01-03,4%,100%,1,23,"Addition of gov.mo, Jump from 4% to 100%, 1 to 23"
+edu.lb,2024-02-17,0%,100%,0,15,"Addition of edu.lb, Jump from 0% to 100%, 0 to 15"
+edu.lb,2023-12-23,0%,100%,0,15,"Addition of edu.lb, Jump from 0% to 100%, 0 to 15"
+
+
+1. The major cause of the “big drop” is the removal of at least 112 generic second-level domain blocking rules (e.g. *.com.au, *.net.br, *.gov.co). The unblocking of *.com.au itself contributed to the unblocking of more than 5k domains:
+
+com.au,2023-11-22,100%,0%,5334,45,"Removal of com.au, Drop from 100% to 0%, 5334 to 45"
+
+2. The first spike on Jan. 11 and Jan. 12 was mostly because of the addition and removal of *.com.au:
+
+com.au,2024-01-11,0%,99%,44,5331,"Addition of com.au, Jump from 0% to 99%, 44 to 5331"
+com.au,2024-01-12,99%,0%,5331,44,"Removal of com.au, Drop from 99% to 0%, 5331 to 44"
+
+3. The second spike on Feb. 1 was mostly becaues of the addition of *.com.au. The down on Feb. 2 is because of removal of *.com.au.
+
+com.au,2024-02-01,0%,100%,27,5334,"Addition of com.au, Jump from 0% to 100%, 27 to 5334"
+com.au,2024-02-03,100%,0%,5334,26,"Removal of com.au, Drop from 100% to 0%, 5334 to 26"
+
+All removal of second-level domain rules to henan list:
+
+xzcat second-level-domain-changes-henan.csv.xz | grep Drop | cut -d, -f2 | sort | uniq -c | sort -rn
+ 125 2023-11-22
+  91 2023-11-29
+  53 2023-12-04
+  16 2024-01-03
+  15 2024-01-28
+  11 2023-12-07
+   9 2023-11-26
+   8 2023-11-28
+   8 2023-11-25
+   6 2023-12-08
+   3 2023-11-27
+   1 2024-02-14
+   1 2024-02-03
+   1 2024-01-31
+   1 2024-01-25
+   1 2024-01-22
+   1 2024-01-20
+   1 2023-12-15
+   1 2023-12-10
+
+All addtiona of second-level domain rules to henan list:
+
+xzcat second-level-domain-changes-henan.csv.xz | grep Jump | cut -d, -f2 | sort | uniq -c | sort -rn
+ 109 2023-11-24
+  47 2023-12-03
+  23 2023-12-06
+   8 2024-01-30
+   8 2024-01-11
+   1 2024-02-25
+   1 2024-02-15
+   1 2024-02-10
+   1 2024-02-08
+   1 2024-02-01
+   1 2024-01-22
+   1 2024-01-19
+   1 2023-12-28
+   1 2023-12-24
+   1 2023-12-23
+   1 2023-12-11
+
+
+Henan blocked a lot of .cn domains. It has the capability of blocking websites even in China:
+
+grep .cn$ censored-sni-guangzhou_2025-02-14.txt

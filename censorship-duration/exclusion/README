@@ -1,0 +1,25 @@
+Because of the crontab job may not finish in time (every 2 hours), the old measurement method will flip the timestamp option on and off, making an unexpected over-estiamating on blocking of GFW and under-estimating on blocking by Henan Firewall.
+
+This is evident by the domains that are 1) shortly (e.g. 1 day) censored by the GFW 2) but also blocked by the Henan Firewall.
+
+We write a program to find start and end of the dates of the domains being blocked, going back to the raw measurement data. If there is less than 12 normal files, or more than 12 normal raw files, we have further evidence the measurement went wrong. 
+
+We remove those dates in ./data of the repo:
+
+cut -d, -f2-3 censored-only-1-day-gfw-date.csv | sort | uniq -c | sort -rn
+   1394 2024-01-28,2024-01-29
+    424 2024-11-14,2024-11-15
+    266 2023-12-01,2023-12-02
+    107 2023-12-04,2023-12-05
+     45 2023-11-29,2023-11-30
+     16 2024-12-18,2024-12-19
+     11 2024-03-04,2024-10-08
+      3 2025-03-31,
+      3 2023-12-05,2023-12-06
+      2 2024-01-11,2024-01-12
+      2 2023-11-30,2023-12-02
+      2 2023-11-05,2023-11-06
+      1 gfw_added,gfw_removed
+      1 2025-03-05,2025-03-06
+      1 2025-02-05,2025-02-06
+      1 2024-01-18,2024-01-19

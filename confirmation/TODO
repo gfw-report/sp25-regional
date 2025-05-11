@@ -1,0 +1,11 @@
+Document how the inside-out.txt and outside-in.txt are generated.
+
+
+In the data folder run for overlap:
+for dir in */; do
+    singapore_list=$(grep -rh TLS,EOF "$dir"10k_sni_censorship_singapore_* | cut -d, -f2 | sort -u) &&
+    seattle_list=$(grep -rh TLS,EOF "$dir"10k_sni_censorship_seattle_* | cut -d, -f2 | sort -u) &&
+    intersection_count=$(comm -12 <(echo "$singapore_list") <(echo "$seattle_list") | wc -l) &&
+    union_count=$(echo -e "$singapore_list\n$seattle_list" | sort -u | wc -l) &&
+    echo "$dir: $(awk -v i="$intersection_count" -v u="$union_count" 'BEGIN { printf "%.4f%%\n", (i / u) * 100 }')"
+done

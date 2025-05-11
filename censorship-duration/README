@@ -1,0 +1,61 @@
+While 26% of domains were censored for less than 51 days by the GFW, 75% of domains were censored for less than 51 days by the Henan Firewall.
+This suggests that the Henan Firewall's blocklist is more volatile than the GFW's blocklist.
+
+GFW: mean=173.8, median=256.0, std=103.9
+Henan Firewall: mean=35.7, median=21.0, std=34.3
+
+
+
+Domains censored for less than 1 day: 0.0% for GFW, 0.0% for Henan Firewall
+Domains censored for less than 6 days: 3.2% for GFW, 5.3% for Henan Firewall
+Domains censored for less than 11 days: 7.6% for GFW, 14.1% for Henan Firewall
+Domains censored for less than 16 days: 13.2% for GFW, 39.5% for Henan Firewall
+Domains censored for less than 21 days: 17.2% for GFW, 48.1% for Henan Firewall
+Domains censored for less than 26 days: 20.2% for GFW, 57.1% for Henan Firewall
+Domains censored for less than 31 days: 22.8% for GFW, 62.8% for Henan Firewall
+Domains censored for less than 36 days: 24.3% for GFW, 66.4% for Henan Firewall
+Domains censored for less than 41 days: 25.0% for GFW, 70.7% for Henan Firewall
+Domains censored for less than 46 days: 25.9% for GFW, 73.3% for Henan Firewall
+Domains censored for less than 51 days: 26.4% for GFW, 75.3% for Henan Firewall
+Domains censored for less than 56 days: 27.1% for GFW, 76.7% for Henan Firewall
+Domains censored for less than 61 days: 27.4% for GFW, 77.9% for Henan Firewall
+Domains censored for less than 66 days: 27.7% for GFW, 79.9% for Henan Firewall
+Domains censored for less than 71 days: 28.0% for GFW, 82.3% for Henan Firewall
+Domains censored for less than 76 days: 28.3% for GFW, 86.9% for Henan Firewall
+Domains censored for less than 81 days: 28.4% for GFW, 92.2% for Henan Firewall
+Domains censored for less than 86 days: 28.6% for GFW, 93.1% for Henan Firewall
+Domains censored for less than 91 days: 28.8% for GFW, 93.9% for Henan Firewall
+Domains censored for less than 96 days: 29.1% for GFW, 94.8% for Henan Firewall
+Domains censored for less than 101 days: 29.6% for GFW, 95.3% for Henan Firewall
+Domains censored for less than 106 days: 30.1% for GFW, 96.1% for Henan Firewall
+Domains censored for less than 111 days: 30.3% for GFW, 96.4% for Henan Firewall
+Domains censored for less than 116 days: 30.7% for GFW, 97.1% for Henan Firewall
+Domains censored for less than 121 days: 30.8% for GFW, 97.7% for Henan Firewall
+Domains censored for less than 126 days: 31.2% for GFW, 98.0% for Henan Firewall
+Domains censored for less than 131 days: 31.4% for GFW, 98.2% for Henan Firewall
+Domains censored for less than 136 days: 31.8% for GFW, 98.3% for Henan Firewall
+Domains censored for less than 141 days: 31.8% for GFW, 98.4% for Henan Firewall
+Domains censored for less than 146 days: 31.9% for GFW, 98.5% for Henan Firewall
+Domains censored for less than 151 days: 32.5% for GFW, 98.7% for Henan Firewall
+Domains censored for less than 156 days: 32.8% for GFW, 98.8% for Henan Firewall
+Domains censored for less than 161 days: 40.7% for GFW, 98.8% for Henan Firewall
+Domains censored for less than 166 days: 41.0% for GFW, 98.9% for Henan Firewall
+Domains censored for less than 171 days: 41.2% for GFW, 98.9% for Henan Firewall
+Domains censored for less than 176 days: 41.4% for GFW, 99.0% for Henan Firewall
+Domains censored for less than 181 days: 41.4% for GFW, 99.0% for Henan Firewall
+Domains censored for less than 186 days: 41.5% for GFW, 99.1% for Henan Firewall
+Domains censored for less than 191 days: 41.7% for GFW, 99.1% for Henan Firewall
+Domains censored for less than 196 days: 42.2% for GFW, 99.1% for Henan Firewall
+Domains censored for less than 201 days: 42.3% for GFW, 99.1% for Henan Firewall
+Domains censored for less than 206 days: 42.4% for GFW, 99.7% for Henan Firewall
+Domains censored for less than 211 days: 43.2% for GFW, 99.8% for Henan Firewall
+Domains censored for less than 216 days: 43.4% for GFW, 99.8% for Henan Firewall
+Domains censored for less than 221 days: 43.6% for GFW, 99.8% for Henan Firewall
+Domains censored for less than 226 days: 44.1% for GFW, 99.8% for Henan Firewall
+Domains censored for less than 231 days: 44.6% for GFW, 99.9% for Henan Firewall
+Domains censored for less than 236 days: 44.9% for GFW, 99.9% for Henan Firewall
+Domains censored for less than 241 days: 45.3% for GFW, 99.9% for Henan Firewall
+Domains censored for less than 246 days: 45.4% for GFW, 99.9% for Henan Firewall
+Domains censored for less than 251 days: 45.6% for GFW, 100.0% for Henan Firewall
+Domains censored for less than 256 days: 49.3% for GFW, 100.0% for Henan Firewall
+Domains censored for less than 261 days: 100.0% for GFW, 100.0% for Henan Firewall
